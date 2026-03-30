@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+    <p>Enter Your PIN</p>
+    <input type="password" id="pinInput">
+    <button onclick="login()">Unlock</button>
+</div>
+
+<div id="dashboard" class="box hidden">
+    <h1>TripPlanner</h1>
+    <div class="button" onclick="showCreate()">+ Add New List</div>
+    <div id="tripList"></div>
+</div>
+
+<div id="create" class="box hidden">
+    <h1>TripPlanner</h1>
+    <h3>Create a New List</h3>
+
+    <input id="country" placeholder="Country">
+
+    <p>Duration:</p>
+    <label><input type="radio" name="duration" value="short">1-7 Days</label>
+    <label><input type="radio" name="duration" value="medium">1-2 Weeks</label>
+    <label><input type="radio" name="duration" value="long">1 Month+</label>
+
+    <p>Climate:</p>
+    <select id="climate">
+        <option value="hot">Hot</option>
+        <option value="cold">Cold</option>
+        <option value="rainy">Rainy</option>
+    </select>
+
+    <p>Activities:</p>
+    <input id="activities" placeholder="e.g. beach,hiking">
+
+    <br><br>
+    <button onclick="createTrip()">Create</button>
+    <button onclick="showDashboard()">Back</button>
+</div>
+
+<div id="trip" class="box hidden">
+    <h1 id="tripTitle"></h1>
+    <div id="items"></div>
+
+    <input id="newItem" placeholder="Add item">
+    <button onclick="addItem()">Add</button>
+
+    <br><br>
+    <button onclick="showTips()">Tips</button>
+    <button onclick="showDashboard()">Back</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

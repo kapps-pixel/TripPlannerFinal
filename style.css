@@ -1,0 +1,5 @@
+body { font-family: Arial; background:#eee; text-align:center; }
+.box { background:white; padding:30px; margin:50px auto; width:400px; border:5px solid #7ea1c4; }
+.hidden { display:none; }
+.button { background:#a9bdd6; padding:15px; margin:10px; border-radius:10px; cursor:pointer; }
+input { padding:10px; width:80%; margin:5px; }
