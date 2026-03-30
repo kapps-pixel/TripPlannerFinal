@@ -1,18 +1,29 @@
 <!DOCTYPE html>
+<html>
+<head>
+    <title>TripPlanner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login" class="box">
+    <h1>TripPlanner</h1>
     <p>Enter Your PIN</p>
     <input type="password" id="pinInput">
     <button onclick="login()">Unlock</button>
 </div>
 
+<!-- DASHBOARD -->
 <div id="dashboard" class="box hidden">
     <h1>TripPlanner</h1>
     <div class="button" onclick="showCreate()">+ Add New List</div>
     <div id="tripList"></div>
 </div>
 
+<!-- CREATE TRIP -->
 <div id="create" class="box hidden">
-    <h1>TripPlanner</h1>
-    <h3>Create a New List</h3>
+    <h1>Create a New Trip</h1>
 
     <input id="country" placeholder="Country">
 
@@ -29,13 +40,14 @@
     </select>
 
     <p>Activities:</p>
-    <input id="activities" placeholder="e.g. beach,hiking">
+    <input id="activities" placeholder="beach, hiking">
 
     <br><br>
     <button onclick="createTrip()">Create</button>
     <button onclick="showDashboard()">Back</button>
 </div>
 
+<!-- PACKING LIST -->
 <div id="trip" class="box hidden">
     <h1 id="tripTitle"></h1>
     <div id="items"></div>
@@ -44,7 +56,6 @@
     <button onclick="addItem()">Add</button>
 
     <br><br>
-    <button onclick="showTips()">Tips</button>
     <button onclick="showDashboard()">Back</button>
 </div>
 
