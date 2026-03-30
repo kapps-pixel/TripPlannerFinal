@@ -1,12 +1,15 @@
 function login() {
+    console.log("login function running"); // DEBUG
+
     const pin = document.getElementById("pinInput").value;
+    console.log("entered pin:", pin);
 
     if (pin === "1234") {
-        // hide login
-        document.getElementById("login").classList.add("hidden");
+        console.log("correct pin");
 
-        // show dashboard
-        document.getElementById("dashboard").classList.remove("hidden");
+        document.getElementById("login").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+
     } else {
         alert("Wrong PIN");
     }
