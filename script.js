@@ -1,3 +1,12 @@
+function login() {
+    const pin = document.getElementById("pinInput").value;
+
+    if (pin === "1234") {
+        showDashboard();
+    } else {
+        alert("Wrong PIN");
+    }
+
 function renderItems() {
     const div = document.getElementById("items");
     div.innerHTML = "";
