@@ -31,6 +31,11 @@ function showDashboard() {
 function createTrip() {
     const name = document.getElementById("country").value;
 
+    if (!name) {
+        alert("Please enter a location");
+        return;
+    }
+
     const duration = document.querySelector('input[name="duration"]:checked')?.value;
 
     const climate = Array.from(document.querySelectorAll('.climate-group input:checked'))
@@ -40,11 +45,17 @@ function createTrip() {
 
     let items = generateItems(duration, climate, activities);
 
+    // 🚫 prevent duplicate trips
+    if (trips.some(t => t.name === name)) {
+        alert("Trip already exists");
+        return;
+    }
+
     trips.push({ name, items });
 
     save();
 
-    showDashboard(); // 🔥 this switches screen
+    showDashboard();
 }
 
 // PACKING LOGIC
@@ -97,4 +108,24 @@ function renderTrips() {
             </div>
         `;
     });
+}
+
+function renderItems() {
+    const div = document.getElementById("items");
+    div.innerHTML = "";
+
+    trips[currentTrip].items.forEach(item => {
+        div.innerHTML += `<div>☐ ${item}</div>`;
+    });
+}
+
+function openTrip(index) {
+    currentTrip = index;
+
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("trip").style.display = "block";
+
+    document.getElementById("tripTitle").innerText = trips[index].name;
+
+    renderItems(); // 🔥 THIS DISPLAYS THE LIST
 }
