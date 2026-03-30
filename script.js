@@ -24,21 +24,27 @@ function showDashboard() {
     document.getElementById("trip").style.display = "none";
     document.getElementById("dashboard").style.display = "block";
 
-    renderTrips(); // 🔥 THIS FIXES YOUR ISSUE
+    renderTrips(); // 🔥 THIS IS KEY
 }
 
 // CREATE TRIP
 function createTrip() {
     const name = document.getElementById("country").value;
+
     const duration = document.querySelector('input[name="duration"]:checked')?.value;
-    const climate = Array.from(document.querySelectorAll('.climate-group input:checked')).map(c => c.value);
+
+    const climate = Array.from(document.querySelectorAll('.climate-group input:checked'))
+        .map(c => c.value);
+
     const activities = document.getElementById("activities").value;
 
     let items = generateItems(duration, climate, activities);
 
     trips.push({ name, items });
+
     save();
-    showDashboard();
+
+    showDashboard(); // 🔥 this switches screen
 }
 
 // PACKING LOGIC
