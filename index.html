@@ -35,17 +35,26 @@
 
     <input id="country" placeholder="Country">
 
-    <p>Duration:</p>
-    <label><input type="radio" name="duration" value="short">1-7 Days</label>
-    <label><input type="radio" name="duration" value="medium">1-2 Weeks</label>
-    <label><input type="radio" name="duration" value="long">1 Month+</label>
+   <p>Duration:</p>
+
+<div class="duration-group">
+    <label><input type="radio" name="duration" value="short"> 1–7 Days</label>
+    <label><input type="radio" name="duration" value="medium"> 1–2 Weeks</label>
+    <label><input type="radio" name="duration" value="long"> 1 Month+</label>
+</div>
 
     <p>Climate:</p>
-    <select id="climate">
-        <option value="hot">Hot</option>
-        <option value="cold">Cold</option>
-        <option value="rainy">Rainy</option>
-    </select>
+
+<div class="climate-group">
+    <label><input type="checkbox" value="hot"> Hot</label>
+    <label><input type="checkbox" value="cold"> Cold</label>
+    <label><input type="checkbox" value="rainy"> Rainy</label>
+    <label><input type="checkbox" value="humid"> Humid</label>
+    <label><input type="checkbox" value="dry"> Dry</label>
+    <label><input type="checkbox" value="windy"> Windy</label>
+    <label><input type="checkbox" value="snowy"> Snowy</label>
+    <label><input type="checkbox" value="tropical"> Tropical</label>
+</div>
 
     <p>Activities:</p>
     <input id="activities" placeholder="beach, hiking">

@@ -32,3 +32,22 @@ input, select {
     width: 80%;
     margin: 5px;
 }
+
+.duration-group {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 15px 0;
+}
+
+.duration-group label {
+    font-size: 16px;
+}
+
+.climate-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+}
