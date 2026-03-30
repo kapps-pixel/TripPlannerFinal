@@ -1,7 +1,7 @@
 let trips = JSON.parse(localStorage.getItem("trips")) || [];
 let currentTrip = null;
 
-// ---------------- LOGIN ----------------
+// LOGIN
 function login() {
     const pin = document.getElementById("pinInput").value;
 
@@ -13,7 +13,7 @@ function login() {
     }
 }
 
-// ---------------- NAVIGATION ----------------
+// NAVIGATION
 function showCreate() {
     document.getElementById("dashboard").style.display = "none";
     document.getElementById("create").style.display = "block";
@@ -25,17 +25,7 @@ function showDashboard() {
     document.getElementById("dashboard").style.display = "block";
 }
 
-function openTrip(index) {
-    currentTrip = index;
-
-    document.getElementById("dashboard").style.display = "none";
-    document.getElementById("trip").style.display = "block";
-
-    document.getElementById("tripTitle").innerText = trips[index].name;
-    renderItems();
-}
-
-// ---------------- CREATE TRIP ----------------
+// CREATE TRIP
 function createTrip() {
     const name = document.getElementById("country").value;
     const duration = document.querySelector('input[name="duration"]:checked')?.value;
@@ -49,7 +39,7 @@ function createTrip() {
     showDashboard();
 }
 
-// ---------------- PACKING LOGIC ----------------
+// PACKING LOGIC
 function generateItems(duration, climate, activities) {
     let items = [];
 
@@ -72,34 +62,7 @@ function generateItems(duration, climate, activities) {
     return items;
 }
 
-// ---------------- RENDER ----------------
-function renderTrips() {
-    const list = document.getElementById("tripList");
-    list.innerHTML = "";
-
-    trips.forEach((t, i) => {
-        list.innerHTML += `<div onclick="openTrip(${i})">${t.name}</div>`;
-    });
-}
-
-function renderItems() {
-    const div = document.getElementById("items");
-    div.innerHTML = "";
-
-    trips[currentTrip].items.forEach(item => {
-        div.innerHTML += `<div>☐ ${item}</div>`;
-    });
-}
-
-// ---------------- EDIT ----------------
-function addItem() {
-    const val = document.getElementById("newItem").value;
-    trips[currentTrip].items.push(val);
-    save();
-    renderItems();
-}
-
-// ---------------- STORAGE ----------------
+// STORAGE
 function save() {
     localStorage.setItem("trips", JSON.stringify(trips));
 }
