@@ -1,7 +1,6 @@
 let trips = JSON.parse(localStorage.getItem("trips")) || [];
 let currentTrip = null;
 
-// LOGIN
 function login() {
     const pin = document.getElementById("pinInput").value;
 
@@ -13,7 +12,6 @@ function login() {
     }
 }
 
-// NAVIGATION
 function showCreate() {
     document.getElementById("dashboard").style.display = "none";
     document.getElementById("create").style.display = "block";
@@ -24,10 +22,9 @@ function showDashboard() {
     document.getElementById("trip").style.display = "none";
     document.getElementById("dashboard").style.display = "block";
 
-    renderTrips(); // 🔥 THIS IS KEY
+    renderTrips();
 }
 
-// CREATE TRIP
 function createTrip() {
     const name = document.getElementById("country").value;
 
@@ -45,7 +42,6 @@ function createTrip() {
 
     let items = generateItems(duration, climate, activities);
 
-    // 🚫 prevent duplicate trips
     if (trips.some(t => t.name === name)) {
         alert("Trip already exists");
         return;
@@ -58,41 +54,35 @@ function createTrip() {
     showDashboard();
 }
 
-// PACKING LOGIC
 function generateItems(duration, climateList, activities) {
     let items = [];
 
-    // climate
     climateList.forEach(climate => {
         if (climate === "hot") items.push("T-shirts", "Shorts", "Sunscreen");
         if (climate === "cold") items.push("Jacket", "Sweater");
         if (climate === "rainy") items.push("Umbrella", "Raincoat");
-        if (climate === "snowy") items.push("Snow Boots", "Gloves");
+        if (climate === "snowy") items.push("Snow Boots", "Gloves", "Thick Coat");
         if (climate === "windy") items.push("Windbreaker");
         if (climate === "humid") items.push("Breathable Clothing");
-        if (climate === "dry") items.push("Moisturizer", "Lip Balm");
+        if (climate === "dry") items.push("Lotion", "Lip Balm");
         if (climate === "tropical") items.push("Bug Spray", "Light Clothing");
     });
 
-    // activities
     activities = activities.toLowerCase();
 
     if (activities.includes("beach")) items.push("Swimsuit");
     if (activities.includes("walking")) items.push("Walking Shoes");
     if (activities.includes("hiking")) items.push("Hiking Boots");
 
-    // duration
     if (duration === "short") items.push("3 Outfits");
     if (duration === "medium") items.push("7 Outfits");
     if (duration === "long") items.push("10+ Outfits");
 
-    // essentials
     items.push("Passport", "Wallet", "Phone Charger");
 
-    return [...new Set(items)]; // removes duplicates
+    return [...new Set(items)]; 
 }
 
-// STORAGE
 function save() {
     localStorage.setItem("trips", JSON.stringify(trips));
 }
@@ -132,7 +122,7 @@ function openTrip(index) {
 
     document.getElementById("tripTitle").innerText = trips[index].name;
 
-    renderItems(); // 🔥 THIS DISPLAYS THE LIST
+    renderItems();
 }
 
 function addItem() {
@@ -143,7 +133,7 @@ function addItem() {
 
     trips[currentTrip].items.push(value);
 
-    input.value = ""; // clear box
+    input.value = "";
 
     save();
     renderItems();
@@ -156,10 +146,20 @@ function deleteItem(index) {
 }
 
 function deleteTrip() {
-    if (!confirm("Delete this trip?")) return;
+    console.log("Current trip index:", currentTrip);
+
+    if (currentTrip === null || currentTrip === undefined) {
+        alert("Error: No trip selected");
+        return;
+    }
+
+    if (!confirm("Are you sure you want to delete this trip?")) return;
 
     trips.splice(currentTrip, 1);
 
     save();
+
+    currentTrip = null;
+
     showDashboard();
 }
