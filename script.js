@@ -114,8 +114,13 @@ function renderItems() {
     const div = document.getElementById("items");
     div.innerHTML = "";
 
-    trips[currentTrip].items.forEach(item => {
-        div.innerHTML += `<div>☐ ${item}</div>`;
+    trips[currentTrip].items.forEach((item, i) => {
+        div.innerHTML += `
+            <div class="item-row">
+                <span>☐ ${item}</span>
+                <button onclick="deleteItem(${i})">✕</button>
+            </div>
+        `;
     });
 }
 
@@ -128,4 +133,33 @@ function openTrip(index) {
     document.getElementById("tripTitle").innerText = trips[index].name;
 
     renderItems(); // 🔥 THIS DISPLAYS THE LIST
+}
+
+function addItem() {
+    const input = document.getElementById("newItem");
+    const value = input.value.trim();
+
+    if (!value) return;
+
+    trips[currentTrip].items.push(value);
+
+    input.value = ""; // clear box
+
+    save();
+    renderItems();
+}
+
+function deleteItem(index) {
+    trips[currentTrip].items.splice(index, 1);
+    save();
+    renderItems();
+}
+
+function deleteTrip() {
+    if (!confirm("Delete this trip?")) return;
+
+    trips.splice(currentTrip, 1);
+
+    save();
+    showDashboard();
 }
