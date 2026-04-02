@@ -57,30 +57,51 @@ function createTrip() {
 function generateItems(duration, climateList, activities) {
     let items = [];
 
+    items.push(
+        "Passport",
+        "Wallet",
+        "Phone",
+        "Phone Charger",
+        "Headphones",
+        "Toothbrush",
+        "Toothpaste",
+        "Deodorant",
+        "Shampoo",
+        "Medications",
+        "Travel Documents",
+        "Money / Credit Card"
+    );
+
+    items.push(
+        "Underwear",
+        "Socks",
+        "Sleepwear"
+    );
+
     climateList.forEach(climate => {
         if (climate === "hot") items.push("T-shirts", "Shorts", "Sunscreen");
-        if (climate === "cold") items.push("Jacket", "Sweater");
+        if (climate === "cold") items.push("Jacket", "Sweater", "Warm Pants");
         if (climate === "rainy") items.push("Umbrella", "Raincoat");
-        if (climate === "snowy") items.push("Snow Boots", "Gloves", "Thick Coat");
+        if (climate === "snowy") items.push("Snow Boots", "Gloves");
         if (climate === "windy") items.push("Windbreaker");
         if (climate === "humid") items.push("Breathable Clothing");
-        if (climate === "dry") items.push("Lotion", "Lip Balm");
+        if (climate === "dry") items.push("Moisturizer", "Lip Balm");
         if (climate === "tropical") items.push("Bug Spray", "Light Clothing");
     });
 
     activities = activities.toLowerCase();
 
-    if (activities.includes("beach")) items.push("Swimsuit");
-    if (activities.includes("walking")) items.push("Walking Shoes");
-    if (activities.includes("hiking")) items.push("Hiking Boots");
+    if (activities.includes("beach")) items.push("Swimsuit", "Flip Flops");
+    if (activities.includes("walking")) items.push("Comfortable Shoes");
+    if (activities.includes("hiking")) items.push("Hiking Boots", "Backpack");
+    if (activities.includes("gym")) items.push("Workout Clothes");
+    if (activities.includes("formal")) items.push("Formal Outfit");
 
-    if (duration === "short") items.push("3 Outfits");
-    if (duration === "medium") items.push("7 Outfits");
+    if (duration === "short") items.push("3–5 Outfits");
+    if (duration === "medium") items.push("7–10 Outfits");
     if (duration === "long") items.push("10+ Outfits");
 
-    items.push("Passport", "Wallet", "Phone Charger");
-
-    return [...new Set(items)]; 
+    return [...new Set(items)];
 }
 
 function save() {
